@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Food Recommendations</title>
+</head>
+<body>
+    <h1>Here are your Food Recommendations!</h1>
+
+    <h2>Your Preferences:</h2>
+    <p>Cuisine: {{ user_preferences['cuisine'] }}</p>
+    <p>Dietary Preferences: {{ user_preferences['dietary_preferences'] }}</p>
+    <p>Spice Level: {{ user_preferences['spice_level'] }}</p>
+    <p>Food Allergies: {{ user_preferences['food_allergies'] }}</p>
+    <p>Mood: {{ user_preferences['mood'] }}</p>
+
+    <h2>Recommended Dishes:</h2>
+    <div>
+        {% for dish in recommended_dishes %}
+            <div style="margin-bottom: 20px;">
+                <img src="{{ url_for('static', filename='images/' + dish['image']) }}" alt="{{ dish['name'] }}" width="200">
+                <p>{{ dish['name'] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
